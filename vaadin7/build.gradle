@@ -1,7 +1,8 @@
 buildscript {
     ext {
         grailsVersion = project.grailsVersion
-        vaadinVersion = "7.5.0"
+        //vaadinVersion = "7.5.0"
+        vaadinVersion = "7.6.8"
     }
     repositories {
         mavenLocal()
@@ -9,15 +10,17 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE"
     }
 }
 
 plugins {
-    id "io.spring.dependency-management" version "0.4.0.RELEASE"
+    //id "io.spring.dependency-management" version "0.4.0.RELEASE"
+    //id "io.spring.dependency-management" version "0.5.3.RELEASE"
     id "com.jfrog.bintray" version "1.1"
 }
 
-version "3.0.1"
+version "3.0.4"
 group "org.grails.plugins"
 
 apply plugin: 'maven-publish'
@@ -26,6 +29,7 @@ apply plugin: 'idea'
 apply plugin: "spring-boot"
 apply plugin: "org.grails.grails-plugin"
 apply plugin: "org.grails.grails-gsp"
+apply plugin: "io.spring.dependency-management"
 // Used for publishing to central repository, remove if not needed
 apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/grailsCentralPublishing.gradle'
 apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/bintrayPublishing.gradle'
@@ -77,16 +81,16 @@ dependencies {
     }
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
     compile "com.vaadin:vaadin-push:${vaadinVersion}"
-    compile 'javax.validation:validation-api:1.1.0.Final'
+    //compile 'javax.validation:validation-api:1.1.0.Final'
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
-
+/*
 bintray {
-    user = bintrayUser
-    key = bintrayKey
+    //user = bintrayUser
+    //key = bintrayKey
     pkg {
         userOrg = 'vaadin-for-grails'
         name = "org.grails.plugins:$project.name"
@@ -95,6 +99,22 @@ bintray {
         version {
             attributes = ['grails-plugin': "org.grails.plugins:$project.name"]
             name = project.version
+        }
+    }
+}*/
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+publishing {
+    repositories {
+        maven {
+            // publishing locally
+            url "~/my/.m2"
         }
     }
 }

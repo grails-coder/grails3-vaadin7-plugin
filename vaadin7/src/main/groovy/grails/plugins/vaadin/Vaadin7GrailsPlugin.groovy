@@ -14,26 +14,26 @@ class Vaadin7GrailsPlugin extends Plugin {
 
     private static final Logger log = Logger.getLogger(Vaadin7GrailsPlugin)
 
-    def version = "3.0.1"
+    def version = "3.0.4"
     def grailsVersion = "3.0.1 > *"
 
     def title = "Vaadin 7 Plugin"
-    def author = "Stephan Grundner"
-    def authorEmail = "stephan.grundner@gmail.com"
+    def author = "Armando Montoya"
+    def authorEmail = "aj.montoya@outlook.com"
     def description = '''\
-Plugin for integrating Vaadin 7 into Grails 3.x.
-'''
+        Plugin for integrating Vaadin 7 into Grails 3.x.
+    '''
 
     def profiles = ['web']
 
     // URL to the plugin's documentation
-    def documentation = "https://github.com/vaadin-for-grails/grails3-vaadin7-plugin"
+    def documentation = "https://github.com/grails-coder/grails3-vaadin7-plugin"
 
     def license = "APACHE"
     def organization = [ name: "Vaadin for Grails", url: "https://github.com/vaadin-for-grails" ]
-    def developers = [ [ name: "Stephan Grundner", email: "stephan.grundner@gmail.com" ]]
+    def developers = [ [ name: "Stephan Grundner", email: "stephan.grundner@gmail.com" ], [ name: "Armando Montoya", email: "aj.montoyar@outlook.com" ]]
 
-    def scm = [ url: "https://github.com/vaadin-for-grails/grails3-vaadin7-plugin.git" ]
+    def scm = [ url: "https://github.com/grails-coder/grails3-vaadin7-plugin.git" ]
 
     Closure doWithSpring() { {->
             def config = VaadinConfig.getCurrent()

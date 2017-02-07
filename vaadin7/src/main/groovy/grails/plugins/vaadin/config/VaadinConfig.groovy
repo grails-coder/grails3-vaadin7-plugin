@@ -63,4 +63,13 @@ class VaadinConfig extends PropertySourcesConfig {
         }
         mappedClasses
     }
+
+
+    String lookupServlet(GrailsApplication grailsApplication) {
+        def config = this
+        def mappedClasses = new HashSet<Class<?>>()
+        def classLoader = grailsApplication.classLoader
+        config?.servletConfiguration?.customServlet
+        mappedClasses
+    }
 }
